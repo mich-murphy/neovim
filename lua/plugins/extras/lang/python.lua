@@ -2,7 +2,7 @@ return {
 
   -- add diagnostic and formatter options to null-ls
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
       if type(opts.sources) == "table" then

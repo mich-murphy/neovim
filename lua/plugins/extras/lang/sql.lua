@@ -25,7 +25,7 @@ return {
 
   -- add diagnostic and formatter options to null-ls
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
       table.insert(opts.sources, nls.builtins.diagnostics.sqlfluff)
