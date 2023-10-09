@@ -3,6 +3,8 @@ return {
   -- language specific extension modules
   { import = "plugins.extras.lang.python" },
   { import = "plugins.extras.lang.nix" },
+  { import = "plugins.extras.lang.sql" },
+  { import = "plugins.extras.lang.markdown" },
 
   -- disable autoformat
   {
