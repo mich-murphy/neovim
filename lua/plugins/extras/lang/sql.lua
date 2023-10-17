@@ -4,9 +4,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "sql" })
-      end
+      table.insert(opts.ensure_installed, "sql")
     end,
   },
 
@@ -14,21 +12,17 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, {
-          "sqlfluff",
-          "sqlfmt"
-        })
-      end
+      table.insert(opts.ensure_installed, "sqlfmt")
     end,
   },
 
-  -- add diagnostic and formatter options to null-ls
+  -- add diagnostic and formatter options to none-ls
   {
     "nvimtools/none-ls.nvim",
+    optional = true,
     opts = function(_, opts)
       local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.diagnostics.sqlfluff)
+      opts.sources = opts.sources or {}
       table.insert(opts.sources, nls.builtins.formatting.sqlfmt)
     end,
   },

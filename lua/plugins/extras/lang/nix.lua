@@ -10,9 +10,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "nix" })
-      end
+      table.insert(opts.ensure_installed, "nix")
     end,
   },
 
@@ -20,23 +18,30 @@ return {
   -- {
   --   "williamboman/mason.nvim",
   --   opts = function(_, opts)
-  --     if type(opts.ensure_installed) == "table" then
-  --       vim.list_extend(opts.ensure_installed, { "nil" })
-  --     end
+  --     table.insert(opts.ensure_installed, "nil")
   --   end,
   -- },
 
-  -- add diagnostic and formatter options to null-ls
+  -- add diagnostic and formatter options to none-ls
   {
     "nvimtools/none-ls.nvim",
+    optional = true,
     opts = function(_, opts)
       local nls = require("null-ls")
-      if type(opts.sources) == "table" then
-        vim.list_extend(opts.sources, {
-          nls.builtins.formatting.nixpkgs_fmt,
-        })
-      end
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, nls.builtins.formatting.nixpkgs_fmt)
     end,
+  },
+
+  -- add diagnostic and formatter options
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        ["nix"] = { "nixpkgs_fmt" },
+      },
+    },
   },
 
   -- add lsp server for nix

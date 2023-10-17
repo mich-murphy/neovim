@@ -6,14 +6,6 @@ return {
   { import = "plugins.extras.lang.sql" },
   { import = "plugins.extras.lang.markdown" },
 
-  -- disable autoformat
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      opts.autoformat = false
-    end,
-  },
-
   -- enable lsp_lines for diagnostics
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
