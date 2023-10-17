@@ -1,11 +1,5 @@
 return {
 
-  -- language specific extension modules
-  { import = "plugins.extras.lang.python" },
-  { import = "plugins.extras.lang.nix" },
-  { import = "plugins.extras.lang.sql" },
-  { import = "plugins.extras.lang.markdown" },
-
   -- enable lsp_lines for diagnostics
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",

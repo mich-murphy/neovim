@@ -20,4 +20,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Better paste
-vim.keymap.set("v", "p", '"_dP', { desc = "Paste without changing registry"})
+vim.keymap.set("v", "p", '"_dP', { desc = "Paste without changing registry" })
+
+-- Open LazyExtras
+vim.keymap.set("n", "<Space>se", "<cmd>LazyExtras<cr>", { desc = "Enable/disable LazyExtras" })
