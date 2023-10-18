@@ -8,6 +8,9 @@ return {
     }
   },
 
+  -- disable builtin telescope dependancy
+  { 'nvim-telescope/telescope-fzf-native.nvim', enabled = false },
+
   -- customize file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
