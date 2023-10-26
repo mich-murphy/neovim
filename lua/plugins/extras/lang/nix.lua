@@ -29,7 +29,7 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.nixpkgs_fmt)
+      table.insert(opts.sources, nls.builtins.formatting.alejandra)
     end,
   },
 
@@ -39,7 +39,7 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        ["nix"] = { "nixpkgs_fmt" },
+        ["nix"] = { "alejandra" },
       },
     },
   },
