@@ -8,6 +8,6 @@ return {
       { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate to below tmux pane" },
       { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate to above tmux pane" },
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate to right tmux pane" },
-    }
-  }
+    },
+  },
 }

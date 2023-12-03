@@ -4,12 +4,12 @@ return {
   {
     "simnalamburt/vim-mundo",
     keys = {
-      { "<leader>su", "<cmd>MundoToggle<cr>", desc = "Search undo tree" }
-    }
+      { "<leader>su", "<cmd>MundoToggle<cr>", desc = "Search undo tree" },
+    },
   },
 
   -- disable builtin telescope dependancy
-  { 'nvim-telescope/telescope-fzf-native.nvim', enabled = false },
+  { "nvim-telescope/telescope-fzf-native.nvim", enabled = false },
 
   -- customize file explorer
   {

@@ -4,7 +4,7 @@ return {
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    config = true
+    config = true,
   },
 
   --disable virtual_text in place of lsp_lines
@@ -12,9 +12,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       diagnostics = {
-        virtual_text = false
-      }
-    }
+        virtual_text = false,
+      },
+    },
   },
 
   -- add symbols-outline

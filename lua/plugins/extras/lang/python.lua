@@ -8,7 +8,7 @@ return {
         vim.list_extend(opts.ensure_installed, {
           "black",
           "ruff",
-          "ruff-lsp"
+          "ruff-lsp",
         })
       end
     end,
@@ -25,8 +25,10 @@ return {
         nls.builtins.formatting.ruff,
         nls.builtins.diagnostics.ruff.with({
           extra_args = {
-            "--line-length", "88",
-        }})
+            "--line-length",
+            "88",
+          },
+        }),
       })
     end,
   },
@@ -52,9 +54,9 @@ return {
       },
       linters = {
         ruff = {
-          args = { "--line-length", "88" }
-        }
-      }
-    }
-  }
+          args = { "--line-length", "88" },
+        },
+      },
+    },
+  },
 }
