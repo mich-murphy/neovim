@@ -6,7 +6,6 @@ return {
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, {
-          "black",
           "ruff",
           "ruff-lsp",
         })
@@ -21,7 +20,6 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.builtins.formatting.black,
         nls.builtins.formatting.ruff,
         nls.builtins.diagnostics.ruff.with({
           extra_args = {
@@ -39,7 +37,7 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        ["python"] = { "black", "ruff_fmt" },
+        ["python"] = { "ruff_fmt" },
       },
     },
   },
