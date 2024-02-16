@@ -12,3 +12,22 @@ vim.api.nvim_create_autocmd("WinEnter", {
     })
   end,
 })
+
+-- set Zellij to lock with Neovim is open
+vim.api.nvim_create_autocmd("WinEnter", {
+  callback = function()
+    if vim.env.ZELLIJ ~= nil then
+      vim.fn.system({ "zellij", "action", "switch-mode", "locked" })
+    end
+  end,
+})
+
+-- set Zellij to normal when Neovim exits
+vim.api.nvim_create_autocmd("VimLeave", {
+  callback = function()
+    if vim.env.ZELLIJ ~= nil then
+      vim.fn.system({ "zellij", "action", "switch-mode", "normal" })
+    end
+  end,
+})
+
