@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
   end,
 })
 
--- set Zellij to lock with Neovim is open
+-- set Zellij to lock with Neovim is open: refer to help autocmd-events
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     if vim.env.ZELLIJ ~= nil then
