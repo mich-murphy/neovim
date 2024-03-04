@@ -14,14 +14,6 @@ return {
     end,
   },
 
-  -- add lsp extensions to mason
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = function(_, opts)
-  --     table.insert(opts.ensure_installed, "nil")
-  --   end,
-  -- },
-
   -- add diagnostic and formatter options to none-ls
   {
     "nvimtools/none-ls.nvim",
