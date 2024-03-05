@@ -14,22 +14,22 @@ return {
   },
 
   -- add diagnostic and formatter options to null-ls
-  {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.builtins.formatting.ruff,
-        nls.builtins.diagnostics.ruff.with({
-          extra_args = {
-            "--line-length",
-            "88",
-          },
-        }),
-      })
-    end,
-  },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   optional = true,
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     opts.sources = vim.list_extend(opts.sources or {}, {
+  --       nls.builtins.formatting.ruff,
+  --       nls.builtins.diagnostics.ruff.with({
+  --         extra_args = {
+  --           "--line-length",
+  --           "88",
+  --         },
+  --       }),
+  --     })
+  --   end,
+  -- },
 
   -- configure formattters for conform
   {
