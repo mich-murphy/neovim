@@ -15,7 +15,7 @@ return {
 
   -- add lsp extensions to mason
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = { ensure_installed = { "sqlfluff" } },
   },
 
