@@ -14,6 +14,8 @@ local skip = {
   ["prettier"] = true,
   ["ruff"] = true,
   ["marksman"] = true,
+  ["nixd"] = true,
+  ["alejandra"] = true,
 }
 
 -- LSP servers (lspconfig name -> binary on PATH) that we want to launch
