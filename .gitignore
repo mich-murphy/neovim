@@ -6,7 +6,6 @@ debug
 foo.*
 *.log
 data
-lazy-lock.json
 result
 .DS_store
 $XDG_STATE_HOME
