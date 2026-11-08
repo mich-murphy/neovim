@@ -1,23 +1,95 @@
 return {
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			style = "night",
+			-- Italic spans render in Monaspace Radon (see ghostty config); keep
+			-- keywords upright so Radon stays reserved for comments.
+			styles = { keywords = { italic = false } },
+		},
+		config = function(_, opts)
+			require("tokyonight").setup(opts)
+			vim.cmd.colorscheme("tokyonight-night")
+		end,
+	},
 
-  -- change notification settings
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      stages = "fade_in_slide_out",
-      timeout = 3000,
-      render = "compact",
-    },
-  },
+	{
+		"nvim-mini/mini.icons",
+		lazy = true,
+		opts = {},
+		init = function()
+			package.preload["nvim-web-devicons"] = function()
+				require("mini.icons").mock_nvim_web_devicons()
+				return package.loaded["nvim-web-devicons"]
+			end
+		end,
+	},
 
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.options = vim.tbl_extend("force", opts.options, {
-        section_separators = "",
-        component_separators = "",
-      })
-    end,
-  },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			preset = "helix",
+			spec = {
+				{ "<leader><tab>", group = "tabs" },
+				{ "<leader>b", group = "buffers" },
+				{ "<leader>c", group = "code" },
+				{ "<leader>f", group = "files" },
+				{ "<leader>g", group = "git" },
+				{ "<leader>q", group = "quit" },
+				{ "<leader>s", group = "search" },
+				{ "<leader>u", group = "ui" },
+				{ "<leader>w", group = "windows", proxy = "<C-w>" },
+				{ "<leader>x", group = "trouble" },
+				{ "[", group = "previous" },
+				{ "]", group = "next" },
+				{ "g", group = "go to" },
+				{ "gx", desc = "Open with system application" },
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer keymaps",
+			},
+			{
+				"<C-w><space>",
+				function()
+					require("which-key").show({ keys = "<C-w>", loop = true })
+				end,
+				desc = "Window commands",
+			},
+		},
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-mini/mini.icons" },
+		opts = {
+			options = {
+				theme = "auto",
+				globalstatus = true,
+				section_separators = "",
+				component_separators = "",
+			},
+		},
+	},
+
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "markdown.mdx" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
+		opts = {
+			-- `hide` conceals fence lines, which swallows the virtual lines
+			-- snacks.image uses to render mermaid diagrams below the block.
+			code = { border = "thin", sign = false },
+			heading = { sign = false },
+		},
+	},
 }
