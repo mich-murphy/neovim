@@ -1,0 +1,31 @@
+-- Flake-specific nixd settings (nixpkgs, option sets) live in each project's
+-- .nvim.lua, loaded through 'exrc'.
+return {
+	-- nixd traces every request to stderr at the default level, which fills lsp.log.
+	-- Its nixd-attrset-eval workers also outlive it and ignore SIGTERM
+	-- (nix-community/nixd#436), so kill the process group once nixd exits.
+	cmd = {
+		"sh",
+		"-c",
+		"trap 'pkill -9 -g $$; exit 0' TERM; nixd --log=error <&0 & wait $!; code=$?; pkill -9 -g $$; exit $code",
+	},
+	on_init = function()
+		-- Nvim quits without waiting for servers, and a busy nixd ignores stdin
+		-- closing, so signal the wrapper above to take the process group down.
+		vim.api.nvim_create_autocmd("VimLeave", {
+			group = vim.api.nvim_create_augroup("nixd_process_group", { clear = true }),
+			callback = function()
+				for _, client in ipairs(vim.lsp.get_clients({ name = "nixd" })) do
+					if not client.rpc.is_closing() then
+						client.rpc.terminate()
+					end
+				end
+			end,
+		})
+	end,
+	settings = {
+		nixd = {
+			formatting = { command = { "nixfmt" } },
+		},
+	},
+}
