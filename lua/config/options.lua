@@ -10,8 +10,6 @@ opt.conceallevel = 2
 opt.confirm = false
 opt.cursorline = true
 opt.expandtab = true
--- Run trusted project .nvim.lua files (see :help trust).
-opt.exrc = true
 opt.fillchars = {
 	foldopen = "",
 	foldclose = "",

@@ -1,5 +1,3 @@
--- Flake-specific nixd settings (nixpkgs, option sets) live in each project's
--- .nvim.lua, loaded through 'exrc'.
 return {
 	-- nixd traces every request to stderr at the default level, which fills lsp.log.
 	-- Its nixd-attrset-eval workers also outlive it and ignore SIGTERM
